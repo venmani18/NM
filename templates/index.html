@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Churn Predict</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            background-color: #fdd8b0;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        input[type="text"], input[type="number"] {
+            background-color: #f5f9d5;
+            padding: 10px;
+            width: 200px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+        .btn {
+            margin-top: 20px;
+            background-color: magenta;
+            color: black;
+            font-weight: bold;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        h1, h3 {
+            font-family: Georgia;
+        }
+    </style>
+</head>
+<body>
+    <h1>Churn Predict</h1>
+    <form method="POST" action="/predict">
+        <h3>Enter Age:</h3>
+        <input type="number" name="Age" required>
+
+        <h3>Choose Gender:</h3>
+        <input type="radio" name="Gender" value="Male" required> Male
+        <input type="radio" name="Gender" value="Female"> Female
+
+        <h3>Enter Tenure:</h3>
+        <input type="number" name="Tenure" required>
+
+        <h3>Enter Usage Frequency:</h3>
+        <input type="number" name="Usage Frequency" required>
+
+        <h3>Enter Support Calls:</h3>
+        <input type="number" name="Support Calls" required>
+
+        <h3>Enter Payment Delay:</h3>
+        <input type="number" name="Payment Delay" required>
+
+        <h3>Choose Subscription Type:</h3>
+        <input type="radio" name="Subscription Type" value="Premium" required> Premium
+        <input type="radio" name="Subscription Type" value="Standard"> Standard
+        <input type="radio" name="Subscription Type" value="Basic"> Basic
+
+        <h3>Choose Contract Length:</h3>
+        <input type="radio" name="Contract Length" value="Monthly" required> Monthly
+        <input type="radio" name="Contract Length" value="Quarterly"> Quarterly
+        <input type="radio" name="Contract Length" value="Annual"> Annual
+
+        <h3>Enter Total Spend:</h3>
+        <input type="number" name="Total Spend" required>
+
+        <h3>Enter Last Interaction (in days):</h3>
+        <input type="number" name="Last Interaction" required>
+
+        <br><button class="btn" type="submit">Check</button>
+    </form>
+
+    {% if prediction_text %}
+        <h2>{{ prediction_text }}</h2>
+    {% endif %}
+</body>
+</html>
